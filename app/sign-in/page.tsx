@@ -1,34 +1,42 @@
 "use client";
 
 import React, { useState } from "react";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth, db } from "../firebase/config"; // Import Firebase config
+import { doc, getDoc } from "firebase/firestore";
 import Head from "next/head";
-import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
-import { auth } from "../firebase/config";
 import { useRouter } from "next/navigation";
 
 const SignInPage: React.FC = () => {
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const router = useRouter();
 
-  const [signInWithEmailAndPassword, user, loading, error] =
-    useSignInWithEmailAndPassword(auth);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault(); // Prevents default form submission behavior
+  const handleSignIn = async (e: React.FormEvent) => {
+    e.preventDefault();
     try {
-      await signInWithEmailAndPassword(email, password);
-      setEmail("");
-      setPassword("");
-      if (user) {
-        router.push("/");
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const user = userCredential.user;
+
+      // Fetch username from Firestore
+      const docSnap = await getDoc(doc(db, "users", user.uid));
+      if (docSnap.exists()) {
+        // Store the username in local storage or use it directly in the UI
+        localStorage.setItem("userId", user.uid);
       }
-    } catch (error) {
-      console.error("Sign in failed:", error);
+
+      // Redirect to the homepage after successful sign-in
+      router.push("/");
+    } catch (error: unknown) {
+      const err = error as Error;
+      console.error("Error signing in:", err.message);
     }
   };
-
 
   return (
     <>
@@ -38,10 +46,7 @@ const SignInPage: React.FC = () => {
       <div className="min-h-screen flex items-center justify-center bg-gray-900 text-white">
         <div className="w-full max-w-md p-6 bg-gray-800 rounded-lg shadow-md">
           <h1 className="text-2xl font-bold mb-6 text-center">Sign In</h1>
-          <form onSubmit={handleSubmit} className="space-y-4">
-            {error && (
-              <div className="text-red-500 text-sm">{error.message}</div>
-            )}
+          <form onSubmit={handleSignIn} className="space-y-4">
             <div>
               <label htmlFor="email" className="block text-sm font-medium mb-1">
                 Email
@@ -74,9 +79,8 @@ const SignInPage: React.FC = () => {
             <button
               type="submit"
               className="w-full py-2 px-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-md focus:outline-none focus:ring focus:ring-blue-500"
-              disabled={loading}
             >
-              {loading ? "Signing In..." : "Sign In"}
+              Sign In
             </button>
           </form>
         </div>
