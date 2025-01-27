@@ -1,10 +1,12 @@
-// SignUpPage.tsx
 "use client";
 
 import React, { useState } from "react";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { doc, serverTimestamp, setDoc, getDoc } from "firebase/firestore";
-import { auth, db } from "../firebase/config"; // Import Firebase config
+import {
+  createUserWithEmailAndPassword,
+  sendEmailVerification,
+} from "firebase/auth";
+import { doc, getDoc, serverTimestamp, setDoc } from "firebase/firestore";
+import { auth, db } from "../firebase/config";
 import Head from "next/head";
 import { useRouter } from "next/navigation";
 import { setUserRole } from "@/lib/setUserRole";
@@ -13,42 +15,69 @@ const SignUpPage: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
+  const [error, setError] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
 
   const router = useRouter();
 
   const handleSignUp = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError("");
+    setSuccessMessage("");
+
     try {
+      // Create the user account
       const userCredential = await createUserWithEmailAndPassword(
         auth,
         email,
         password
       );
       const user = userCredential.user;
-      // Add user data to the Firestore `users` collection
+
+      // Save user data to Firestore
       await setDoc(doc(db, "users", user.uid), {
-        username: username,
-        email: email,
-        createdAt: serverTimestamp(), // Use Firestore server timestamp
+        username,
+        email,
+        createdAt: serverTimestamp(),
       });
+
+      // Send email verification
+      await sendEmailVerification(user);
+      setSuccessMessage(
+        "Account created successfully. A verification email has been sent to your email address."
+      );
 
       const docSnap = await getDoc(doc(db, "users", user.uid));
       if (docSnap.exists()) {
         const email = docSnap.data().email;
 
         // Store the username in local storage or use it directly in the UI
-        if (email === "puahwankoon@gmail.com") {
+        if (email === process.env.NEXT_PUBLIC_ADMIN_EMAIL) {
           setUserRole(user.uid, "admin");
         } else {
           setUserRole(user.uid, "user");
         }
+
+        // Store the username in local storage or use it directly in the UI
+        localStorage.setItem("userId", user.uid);
       }
 
-      // Redirect to the homepage after successful sign-up
-      router.push("/sign-in");
+      // Optionally redirect to a "check your email" page
+      router.push("/verify-email");
     } catch (error: unknown) {
-      const err = error as Error;
-      console.error("Error signing in:", err.message);
+      if (typeof error === "object" && error !== null && "code" in error) {
+        const firebaseError = error as { code: string; message: string };
+
+        if (firebaseError.code === "auth/email-already-in-use") {
+          setError("The email is already in use. Please try another one.");
+        } else {
+          setError(
+            firebaseError.message || "An error occurred. Please try again."
+          );
+        }
+      } else {
+        setError("An unexpected error occurred. Please try again.");
+      }
     }
   };
 
@@ -57,7 +86,7 @@ const SignUpPage: React.FC = () => {
       <Head>
         <title>Sign Up</title>
       </Head>
-      <div className="min-h-screen flex items-center justify-center bg-gray-900 text-white">
+      <div className="relative min-h-screen flex items-center justify-center bg-gray-900 text-white">
         <div className="w-full max-w-md p-6 bg-gray-800 rounded-lg shadow-md">
           <h1 className="text-2xl font-bold mb-6 text-center">Sign Up</h1>
           <form onSubmit={handleSignUp} className="space-y-4">
@@ -112,6 +141,10 @@ const SignUpPage: React.FC = () => {
             >
               Sign Up
             </button>
+            {error && <p className="mt-2 text-sm text-red-500">{error}</p>}
+            {successMessage && (
+              <p className="mt-2 text-sm text-green-500">{successMessage}</p>
+            )}
           </form>
         </div>
       </div>

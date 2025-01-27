@@ -1,9 +1,15 @@
-import React from 'react'
+"use client";
+
+import Link from "next/link";
 
 function UserDashboard() {
   return (
-    <div>UserDashboard</div>
-  )
+    <>
+      <p>UserDashboard</p>
+      <Link href={"/sign-in"}>Sign in</Link>
+      <Link href={"/sign-up"}>Sign up</Link>
+    </>
+  );
 }
 
-export default UserDashboard
+export default UserDashboard;

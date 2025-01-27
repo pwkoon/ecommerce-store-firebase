@@ -1,10 +1,11 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { getDoc, doc } from "firebase/firestore";
 import { db } from "./firebase/config";
+import Loader from "@/components/Loader";
 import AdminDashboard from "@/components/AdminDashboard";
 import UserDashboard from "@/components/UserDashboard";
-import { useEffect, useState } from "react";
 
 export default function Home() {
   const [role, setRole] = useState(null);
@@ -47,6 +48,6 @@ export default function Home() {
   } else if (role === "user") {
     return <UserDashboard />;
   } else {
-    return <p>Loading...</p>;
+    return <Loader />;
   }
 }
