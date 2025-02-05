@@ -6,7 +6,7 @@ import {
   sendEmailVerification,
 } from "firebase/auth";
 import { doc, getDoc, serverTimestamp, setDoc } from "firebase/firestore";
-import { auth, db } from "../firebase/config";
+import { auth, db } from "../../firebase/firebase-client";
 import Head from "next/head";
 import { useRouter } from "next/navigation";
 import { setUserRole } from "@/lib/setUserRole";

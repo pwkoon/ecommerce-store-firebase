@@ -1,4 +1,4 @@
-import { db } from "@/app/firebase/config";
+import { db } from "@/firebase/firebase-client";
 import { doc, updateDoc } from "firebase/firestore";
 
 export async function setUserRole(
