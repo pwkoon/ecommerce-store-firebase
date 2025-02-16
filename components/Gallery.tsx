@@ -1,0 +1,65 @@
+"use client";
+
+import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
+import { useState } from "react";
+
+interface ProductImageProps {
+  id: number;
+  onExpand: (id: number) => void;
+}
+
+const ProductImage: React.FC<ProductImageProps> = ({ id, onExpand }) => {
+  return (
+    <motion.img
+      src={`/images/guava-${id}.jpg`}
+      alt="Product"
+      onClick={() => onExpand(id)}
+      className="related-product-image"
+      layoutId={`product-${id}`}
+    />
+  );
+};
+
+const Gallery: React.FC = () => {
+  const [productIds, setProductIds] = useState<number[]>([1, 2, 3, 5, 6]);
+  const [primaryProduct, setPrimaryProduct] = useState<number>(4);
+
+  const setAsPrimary = (id: number) => {
+    setProductIds((prevIds) => {
+      const currentProductId = primaryProduct;
+      return [...prevIds.filter((x) => x !== id), currentProductId];
+    });
+    setPrimaryProduct(id);
+  };
+
+  return (
+    <>
+      <div id="gallery" className="h-100">
+        <div className="container">
+          <LayoutGroup>
+            <main className="primary-container">
+              <AnimatePresence>
+                <motion.img
+                  key={primaryProduct}
+                  className="primary-product-image"
+                  src={`/images/guava-${primaryProduct}.jpg`}
+                  alt="Primary Product"
+                  layoutId={`product-${primaryProduct}`}
+                />
+              </AnimatePresence>
+            </main>
+            <aside className="product-gallery">
+              <AnimatePresence>
+                {productIds.map((id) => (
+                  <ProductImage id={id} key={id} onExpand={setAsPrimary} />
+                ))}
+              </AnimatePresence>
+            </aside>
+          </LayoutGroup>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default Gallery;

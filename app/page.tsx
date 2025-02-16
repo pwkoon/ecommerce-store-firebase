@@ -1,4 +1,5 @@
 import Homepage from "@/components/Homepage";
+// import Loader from "@/components/Loader";
 import LogoutButton from "@/components/LogoutButton";
 import { firestore, admin } from "@/firebase/firebase-admin"; // Firebase Admin initialized here
 import { cookies } from "next/headers"; // Access cookies from next/headers
@@ -58,11 +59,13 @@ async function getUserDataFromToken(): Promise<User | null> {
 
 export default async function Home() {
   const user = await getUserDataFromToken(); // Retrieve user data
+  // const cookieStore = await cookies();
+  // const hasSeenLoading = cookieStore.get("seenLoadingScreen");
 
   return (
-    <div className="bg-gray-900 h-screen text-white flex flex-col">
+    <>
       {/* Top Right Buttons */}
-      <div className="absolute top-4 right-4 flex gap-4">
+      <div className="absolute p-5 flex gap-4">
         {!user ? (
           <>
             <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded transition">
@@ -76,13 +79,10 @@ export default async function Home() {
           <LogoutButton />
         )}
       </div>
-
       {/* Centered Content */}
-      <div className="flex flex-grow justify-center items-center text-center">
-        {!user && <Homepage />}
-        {/* {user && user.role === "admin" && <AdminDashboard />}
+      {!user && <Homepage />}
+      {/* {user && user.role === "admin" && <AdminDashboard />}
         {user && user.role === "user" && <UserDashboard />} */}
-      </div>
-    </div>
+    </>
   );
 }

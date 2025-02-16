@@ -86,7 +86,7 @@ const SignUpPage: React.FC = () => {
       <Head>
         <title>Sign Up</title>
       </Head>
-      <div className="relative min-h-screen flex items-center justify-center bg-gray-900 text-white">
+      <div className="relative min-h-screen flex items-center justify-center bg-gray text-white">
         <div className="w-full max-w-md p-6 bg-gray-800 rounded-lg shadow-md">
           <h1 className="text-2xl font-bold mb-6 text-center">Sign Up</h1>
           <form onSubmit={handleSignUp} className="space-y-4">
