@@ -1,5 +1,9 @@
+"use client";
+
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react"; // Import icons from lucide-react
+import LogoutButton from "./LogoutButton";
+import { useUser } from "@/lib/useUser";
 
 interface NavbarProps {
   activeSection: string;
@@ -8,6 +12,9 @@ interface NavbarProps {
 
 export default function Navbar({ activeSection, showNavbar }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const { user } = useUser();
+  const [isUserButtonOpen, setIsUserButtonOpen] = useState(false);
+
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 768) {
@@ -18,36 +25,61 @@ export default function Navbar({ activeSection, showNavbar }: NavbarProps) {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
   if (!showNavbar) return null;
+
   return (
     <>
       {/* Sidebar for large screens */}
-      <nav className="z-50 fixed top-0 right-0 h-screen w-60 bg-green-800 text-introWhite p-6 hidden md:flex gap-6 font-bold">
-        <a
-          href="#about"
-          className={`relative text-yellow-400 transition-colors duration-500 animated-underline ${
-            activeSection === "about" ? "active" : ""
-          }`}
-        >
-          About
-        </a>
-        <a
-          href="#gallery"
-          className={`relative text-yellow-400 transition-colors duration-500 animated-underline ${
-            activeSection === "fruits" ? "active" : ""
-          }`}
-        >
-          Fruits
-        </a>
-        <a
-          href="#review"
-          className={`relative text-yellow-400 transition-colors duration-500 animated-underline ${
-            activeSection === "contact" ? "active" : ""
-          }`}
-        >
-          Contact
-        </a>
-      </nav>
+      <div className="w-full flex justify-end">
+        <nav className="z-50 fixed top-0 items-center bg-green-800 text-introWhite p-6 hidden md:flex gap-6 font-bold">
+          <a
+            href="#about"
+            className={`relative text-yellow-400 transition-colors duration-500 animated-underline ${
+              activeSection === "about" ? "active" : ""
+            }`}
+          >
+            About
+          </a>
+          <a
+            href="#fruits"
+            className={`relative text-yellow-400 transition-colors duration-500 animated-underline ${
+              activeSection === "fruits" ? "active" : ""
+            }`}
+          >
+            Fruits
+          </a>
+          <a
+            href="#contact"
+            className={`relative text-yellow-400 transition-colors duration-500 animated-underline ${
+              activeSection === "contact" ? "active" : ""
+            }`}
+          >
+            Contact
+          </a>
+          {user ? (
+            <div className="relative inline-block">
+              <button
+                className="bg-darkYellow p-2 text-green rounded transition hover:bg-darkYellow/90"
+                onClick={() => setIsUserButtonOpen((prev) => !prev)}
+              >
+                Hello {user.username}
+              </button>
+              <div
+                className={`absolute right-0 mt-2 w-24 bg-aboutDark rounded shadow-lg transition-all duration-300 transform ${
+                  isUserButtonOpen
+                    ? "opacity-100 scale-100"
+                    : "opacity-0 scale-95 pointer-events-none"
+                }`}
+              >
+                <LogoutButton />
+              </div>
+            </div>
+          ) : (
+            ""
+          )}
+        </nav>
+      </div>
 
       {/* Mobile Navbar */}
       <div className="md:hidden fixed top-0 left-0 w-full bg-green-800 p-4 flex justify-between items-center z-50">

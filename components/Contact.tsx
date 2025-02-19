@@ -3,7 +3,6 @@
 import React from "react";
 import Map from "./Map";
 import { motion } from "framer-motion";
-import { Phone } from "lucide-react";
 
 function Contact() {
   return (
@@ -26,7 +25,6 @@ function Contact() {
       >
         CONTACT US
         <div className="text-2xl flex items-center justify-center gap-10 p-10">
-          {/* <Phone/> */}
           <p>Whatsapp</p>
           <p>Facebook</p>
         </div>

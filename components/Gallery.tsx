@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
+import Link from "next/link";
 import { useState } from "react";
 
 interface ProductImageProps {
@@ -34,7 +35,10 @@ const Gallery: React.FC = () => {
 
   return (
     <>
-      <div id="gallery" className="h-100">
+      <div className="bg-lightWhite p-5 text-aboutDark font-bold text-7xl text-center">
+        <Link href={"/"}>Guava Farm&apos;s Gallery</Link>
+      </div>
+      <div className="h-100 bg-lightWhite p-5">
         <div className="container">
           <LayoutGroup>
             <main className="primary-container">
