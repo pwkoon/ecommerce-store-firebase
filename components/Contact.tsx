@@ -1,10 +1,11 @@
 "use client";
 
-import React from "react";
 import Map from "./Map";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 function Contact() {
+  const t = useTranslations("Contact");
   return (
     <div
       id="contact"
@@ -23,7 +24,7 @@ function Contact() {
         transition={{ duration: 1 }}
         viewport={{ once: true }} // Ensures it animates only once
       >
-        CONTACT US
+        {t("Contact")}
         <div className="text-2xl flex items-center justify-center gap-10 p-10">
           <p>Whatsapp</p>
           <p>Facebook</p>

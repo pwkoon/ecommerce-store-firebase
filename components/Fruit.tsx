@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 
 function Fruit() {
@@ -32,7 +32,7 @@ function Fruit() {
       className="flex h-screen font-inria font-bold text-introWhite text-center mx-auto relative overflow-hidden"
     >
       {/* Sidebar Navbar */}
-      <div className="flex flex-col bg-green items-center justify-center h-full w-1/4">
+      <div className="flex flex-col bg-green items-center justify-center w-1/4 min-h-screen">
         <div className="flex flex-col items-center justify-center bg-lightWhite w-full h-screen text-black">
           {guavaDetails.map((guava) => (
             <div
@@ -58,40 +58,44 @@ function Fruit() {
       </div>
 
       {/* Guava Details */}
-      <div className="flex flex-col items-center justify-center w-full bg-green h-full p-10">
-        <motion.div
-          key={selectedGuava.id}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          transition={{ duration: 0.5 }}
-          className="max-w-2xl mx-auto text-center flex  jusitfy-center gap-20 items-center"
-        >
-          <div className="pt-18">
-            <div
-              className="flex justify-center items-center gap-5 border border-t-4 border-l-4 border-yellow w-full mx-auto px-5 py-3"
-              style={{
-                clipPath:
-                  "polygon(0% 0%, 100% 0%, 100% 90%, 50% 100%, 0% 100%)",
-              }}
-            >
-              <div>
-                <h1 className="font-inria text-3xl">{selectedGuava.title}</h1>
-                <hr className="my-2 border-yellow" />
-                <h1 className="font-inria text-7xl">{t("Guava-A-1")}</h1>
+      <div className="flex flex-col items-center justify-center w-full bg-green p-10">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={selectedGuava.id}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.5 }}
+            className="max-w-2xl mx-auto text-center flex  jusitfy-center gap-20 items-center"
+          >
+            <div className="pt-18">
+              <div
+                className="flex justify-center items-center gap-5 border border-t-4 border-l-4 border-yellow w-full mx-auto px-5 py-3"
+                style={{
+                  clipPath:
+                    "polygon(0% 0%, 100% 0%, 100% 90%, 50% 100%, 0% 100%)",
+                }}
+              >
+                <div>
+                  <h1 className="font-inria text-3xl">{selectedGuava.title}</h1>
+                  <hr className="my-2 border-yellow" />
+                  <h1 className="font-inria text-7xl">{t("Guava-A-1")}</h1>
+                </div>
+                <h1 className="font-inria text-9xl">{selectedGuava.letter}</h1>
               </div>
-              <h1 className="font-inria text-9xl">{selectedGuava.letter}</h1>
+              <p className="text-xl p-4 max-w-lg">
+                {selectedGuava.description}
+              </p>
             </div>
-            <p className="text-xl p-4 max-w-lg">{selectedGuava.description}</p>
-          </div>
-          <Image
-            src={selectedGuava.image}
-            alt={selectedGuava.title}
-            width={600}
-            height={300}
-            className="w-[600px] h-[400px] object-cover col-span-2 mb-20"
-          />
-        </motion.div>
+            <Image
+              src={selectedGuava.image}
+              alt={selectedGuava.title}
+              width={600}
+              height={300}
+              className="w-[600px] h-[400px] object-cover col-span-2 mb-20"
+            />
+          </motion.div>
+        </AnimatePresence>
       </div>
     </div>
   );

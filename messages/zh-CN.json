@@ -44,5 +44,20 @@
     "info-3": "加入我们的社区，分享您的体验吧！",
     "sign-up": "注册",
     "sign-in": "登录"
-  }
+  },
+  "DirectGallery": {
+    "Gallery": "收集册"
+  },
+  "Contact": {
+    "Contact": "联络我们"
+  },
+  "ReviewForm": {
+    "more reviews": "更多评论",
+    "hello": "哈喽",
+    "hello-2": "我们诚挚期待您分享在我们的番石榴农场的体验！",
+    "comments": "评论",
+    "character": "300字数",
+    "rating": "评分",
+    "submit": "提交"
+    }
 }

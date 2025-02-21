@@ -1,9 +1,11 @@
 "use client";
 
 import { Link } from "@/i18n/routing";
-import React from "react";
+import { useTranslations } from "next-intl";
 
 function DirectGallery() {
+  const t = useTranslations("DirectGallery");
+
   return (
     <>
       <div className="grid grid-cols-2">
@@ -15,7 +17,7 @@ function DirectGallery() {
             {/* Content */}
             <div className="relative z-10 text-center text-introWhite px-6">
               <h1 className="text-5xl font-inria font-bold drop-shadow-lg">
-                <Link href={"/gallery"}>GALLERY</Link>
+                <Link href={"/gallery"}>{t("Gallery")}</Link>
               </h1>
             </div>
           </div>

@@ -13,7 +13,7 @@ import { useUser } from "@/lib/useUser";
 import { RefreshCwIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { Link } from "@/i18n/routing";
-import { AnimatePresence, motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 type ReviewProps = {
   username: string;
@@ -36,6 +36,8 @@ function ReviewForm({ username }: ReviewProps) {
   const router = useRouter();
 
   const [reviews, setReviews] = useState<ReviewType[]>([]);
+
+  const t = useTranslations("ReviewForm");
 
   useEffect(() => {
     const reviewsRef = collection(db, "reviews");
@@ -91,38 +93,32 @@ function ReviewForm({ username }: ReviewProps) {
           className="float-right cursor-pointer"
         />
         <div className="max-w-[400px]">
-          <AnimatePresence>
-            {reviews.slice(0, 3).map((review) => (
-              <motion.div
-                key={review.id} // Keep consistent keys for smooth animation
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 50 }} // Exit animation before new shuffle
-                transition={{ duration: 0.8, ease: "easeOut" }}
-                className="flex-row bg-lightWhite text-black rounded-xl my-7"
-              >
-                <p>{review.comments}</p>
-                <p className="bg-darkYellow w-1/3">—{review.username}—</p>
-              </motion.div>
-            ))}
-          </AnimatePresence>
+          {reviews.slice(0, 3).map((review) => (
+            <div
+              key={review.id}
+              className="flex-row bg-lightWhite text-black rounded-xl my-7"
+            >
+              <p>{review.comments}</p>
+              <p className="bg-darkYellow w-1/3">—{review.username}—</p>
+            </div>
+          ))}
         </div>
         <div className="flex-row float-right">
-          <Link href={"/reviews"}>more reviews</Link>
+          <Link href={"/reviews"}>{t("more reviews")}</Link>
           <hr className="float-right w-3/4" />
         </div>
       </div>
       <div className="col-span-2 mx-auto">
         <h1 className="text-xl pb-5">
-          Hello{" "}
+          {t("hello")}{" "}
           <span className="bg-darkYellow text-aboutDark p-1">
             {username ? username : "guest"}
           </span>
-          , we&apos;d love to hear your experience at our Guava Farm!
+          , {t("hello-2")}
         </h1>
         <form onSubmit={handleSubmit}>
           <div>
-            <label htmlFor="comments">Comments</label>
+            <label htmlFor="comments">{t("comments")}</label>
             <textarea
               id="comments"
               maxLength={300} // Restricts input to 300 characters
@@ -132,13 +128,13 @@ function ReviewForm({ username }: ReviewProps) {
               required
             />
             <p className="text-gray-400 text-sm mt-1">
-              {comments.length} / 300 characters
+              {comments.length} / {t("character")}
             </p>
           </div>
 
           {/*Star Rating Selection */}
           <div className="mt-4 flex gap-10 items-center">
-            <label>Rating:</label>
+            <label>{t("rating")}:</label>
             <div className="flex">
               {[1, 2, 3, 4, 5].map((star) => (
                 <FaStar
@@ -159,7 +155,7 @@ function ReviewForm({ username }: ReviewProps) {
             type="submit"
             className="mt-4 py-2 px-4 bg-aboutDark bg-opacity-75 hover:border-darkYellow hover:border-x-4 text-darkYellow font-semibold rounded-md focus:outline-none focus:ring focus:ring-blue-500"
           >
-            Submit
+            {t("submit")}
           </button>
         </form>
       </div>

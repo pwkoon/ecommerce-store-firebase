@@ -44,5 +44,20 @@
     "info-3": "Join our community and share your experience!",
     "sign-up": "Sign Up",
     "sign-in": "Sign In"
+  },
+  "DirectGallery": {
+    "Gallery": "GALLERY"
+  },
+  "Contact": {
+    "Contact": "CONTACT US"
+  },
+  "ReviewForm": {
+    "more reviews": "more reviews",
+    "hello": "Hello",
+    "hello-2": "we'd love to hear your experience at our Guava Farm!",
+    "comments": "Comments",
+    "character": "300 characters",
+    "rating": "Rating",
+    "submit": "Submit"
   }
 }
