@@ -1,0 +1,48 @@
+{
+  "Homepage": {
+    "smallTitle": "Story of",
+    "title1": "Guardian of",
+    "title2": "the field",
+    "read more": "Read more"
+  },
+  "LocaleSwitcher": {
+    "label": "Change language",
+    "locale": "{locale, select, zh_CN {中文 (Simplified)} en {🇺🇸 English} other {Unknown}}"
+  },
+  "Review": {
+    "title": "Reviews"
+  },
+  "Gallery": {
+    "title": "Gallery"
+  },
+  "Navbar": {
+    "about": "About",
+    "fruits": "Fruits",
+    "contact": "Contact",
+    "hello": "Hello"
+  },
+  "About": {
+    "header": "About",
+    "subheader": "Our Guava Farm",
+    "para-1": "Nestled in the heart of nature, our guava farm is dedicated to cultivating the freshest, most flavorful guavas using sustainable and eco-friendly farming practices.",
+    "para-2": "We believe in the power of nature, ensuring that every fruit is nurtured with care, free from harmful chemicals, and packed with natural goodness.",
+    "para-3": "Join us on this journey of freshness and flavor—experience guava farming at its finest!"
+  },
+  "Fruits": {
+    "Guava-A": "Juicy Crispy",
+    "Guava-A-1": "Guava",
+    "Guava-A-2": "A",
+    "Guava-A-description": "A delightful crunch with every bite! This guava is refreshingly crispy and sweet, bursting with tropical goodness that lingers on your taste buds. Perfect for a fresh snack or a fruity treat!",
+    "Guava-B": "Sweet Pink",
+    "Guava-B-1": "Guava",
+    "Guava-B-2": "B",
+    "Guava-B-description": "This pink guava is rich in flavor, boasting a smooth texture and a fragrant aroma that enhances your fruit-eating experience. A must-try for guava lovers!"
+  },
+  "DirectReview": {
+    "info-1": "Wish to leave a review on",
+    "info-2": "GUAVA FARM ?",
+    "info-3": "Join our community and share your experience!",
+    "sign-up": "Sign Up",
+    "sign-in": "Sign In"
+  }
+}

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react"; // Import icons from lucide-react
 import LogoutButton from "./LogoutButton";
 import { useUser } from "@/lib/useUser";
+import { useTranslations } from "next-intl";
 
 interface NavbarProps {
   activeSection: string;
@@ -14,6 +15,8 @@ export default function Navbar({ activeSection, showNavbar }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
   const { user } = useUser();
   const [isUserButtonOpen, setIsUserButtonOpen] = useState(false);
+
+  const t = useTranslations("Navbar");
 
   useEffect(() => {
     const handleResize = () => {
@@ -39,7 +42,7 @@ export default function Navbar({ activeSection, showNavbar }: NavbarProps) {
               activeSection === "about" ? "active" : ""
             }`}
           >
-            About
+            {t("about")}
           </a>
           <a
             href="#fruits"
@@ -47,7 +50,7 @@ export default function Navbar({ activeSection, showNavbar }: NavbarProps) {
               activeSection === "fruits" ? "active" : ""
             }`}
           >
-            Fruits
+            {t("fruits")}
           </a>
           <a
             href="#contact"
@@ -55,15 +58,16 @@ export default function Navbar({ activeSection, showNavbar }: NavbarProps) {
               activeSection === "contact" ? "active" : ""
             }`}
           >
-            Contact
+            {t("contact")}
           </a>
-          {user ? (
+          {user && user.username != "Guest" ? (
             <div className="relative inline-block">
               <button
                 className="bg-darkYellow p-2 text-green rounded transition hover:bg-darkYellow/90"
                 onClick={() => setIsUserButtonOpen((prev) => !prev)}
               >
-                Hello {user.username}
+                {t("hello")}
+                {user.username}
               </button>
               <div
                 className={`absolute right-0 mt-2 w-24 bg-aboutDark rounded shadow-lg transition-all duration-300 transform ${

@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -25,6 +26,8 @@ const Gallery: React.FC = () => {
   const [productIds, setProductIds] = useState<number[]>([1, 2, 3, 5, 6]);
   const [primaryProduct, setPrimaryProduct] = useState<number>(4);
 
+  const t = useTranslations("Gallery");
+
   const setAsPrimary = (id: number) => {
     setProductIds((prevIds) => {
       const currentProductId = primaryProduct;
@@ -36,7 +39,7 @@ const Gallery: React.FC = () => {
   return (
     <>
       <div className="bg-lightWhite p-5 text-aboutDark font-bold text-7xl text-center">
-        <Link href={"/"}>Guava Farm&apos;s Gallery</Link>
+        <Link href={"/"}>Guava Farm&apos;s {t("title")}</Link>
       </div>
       <div className="h-100 bg-lightWhite p-5">
         <div className="container">

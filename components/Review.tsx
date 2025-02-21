@@ -5,6 +5,7 @@ import { collection, query, onSnapshot, Timestamp } from "firebase/firestore";
 import { db } from "@/firebase/firebase-client";
 import { FaStar } from "react-icons/fa";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 type ReviewType = {
   id: string;
@@ -16,6 +17,7 @@ type ReviewType = {
 };
 
 function Review() {
+  const t = useTranslations("Review");
   const [reviews, setReviews] = useState<ReviewType[]>([]);
 
   useEffect(() => {
@@ -36,7 +38,7 @@ function Review() {
 
   return (
     <div className="bg-green h-100 text-lightWhite p-5 font-bold text-5xl text-center">
-      <Link href={"/"}>Guava Farm&apos;s Reviews</Link>
+      <Link href={"/"}>Guava Farm&apos;s {t("title")}</Link>
       <div className="p-20">
         <div className="grid sm:grid-cols-3 md:grid-cols-4 gap-5 text-xl">
           {reviews.length > 0 ? (

@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../firebase/firebase-client"; // Import Firebase config
+import { auth } from "../../../firebase/firebase-client"; // Import Firebase config
 import Head from "next/head";
 import { useRouter } from "next/navigation";
 import { Link } from "@/i18n/routing";

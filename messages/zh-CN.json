@@ -1,0 +1,48 @@
+{
+  "Homepage": {
+    "smallTitle": "关于",
+    "title1": "田野",
+    "title2": "守护者",
+    "read more": "往下探索"
+  },
+  "LocaleSwitcher": {
+    "label": "语言",
+    "locale": "{locale, select, zh_CN {中文 (Simplified)} en {🇺🇸 English}  other {Unknown}}"
+  },
+  "Review": {
+    "title": "评论"
+  },
+  "Gallery": {
+    "title": "收集册"
+  },
+  "Navbar": {
+    "about": "关于我们",
+    "fruits": "自种水果",
+    "contact": "联系",
+    "hello": "您好"
+  },
+  "About": {
+    "header": "走进",
+    "subheader": "我们的农场",
+    "para-1": "坐落于大自然的怀抱中，我们的番石榴农场致力于采用可持续和环保的耕作方式，培育最新鲜、最美味的番石榴。",
+    "para-2": "我们相信大自然的力量，确保每一颗果实都经过精心培育，不含有害化学物质，充满天然的营养与美味。",
+    "para-3": "跟着我们，一同探索新鲜与美味的旅程，体验极致的番石榴种植！"
+  },
+  "Fruits": {
+    "Guava-A": "脆爽",
+    "Guava-A-1": "芭乐",
+    "Guava-A-2": "多汁",
+    "Guava-A-description": "每一口都带来酥脆的口感！这款芭乐清爽香甜，充满热带风味，让美味在味蕾上久久回味。无论是作为新鲜小吃还是水果甜点，都是绝佳之选!",
+    "Guava-B": "粉红",
+    "Guava-B-1": "芭乐",
+    "Guava-B-2": "香甜",
+    "Guava-B-description": "这款粉红芭乐风味浓郁，口感细腻，香气扑鼻，带来极致的水果享受。芭乐爱好者绝对不可错过！!"
+  },
+  "DirectReview": {
+    "info-1": "想在芭乐农场留下评论吗?",
+    "info-2": "",
+    "info-3": "加入我们的社区，分享您的体验吧！",
+    "sign-up": "注册",
+    "sign-in": "登录"
+  }
+}

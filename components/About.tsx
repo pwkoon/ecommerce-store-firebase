@@ -2,8 +2,10 @@
 
 // import Fruit from "./Fruit";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 function About() {
+  const t = useTranslations("About");
   return (
     <>
       <div id="about" className="bg-about bg-fixed bg-center bg-fit">
@@ -19,7 +21,7 @@ function About() {
             transition={{ duration: 1 }}
             viewport={{ once: true }} // Ensures it animates only once
           >
-            ABOUT
+            {t("header")}
           </motion.h1>
 
           {/* Content with Scroll-triggered Animation */}
@@ -30,23 +32,12 @@ function About() {
             transition={{ duration: 1, delay: 0.3 }}
             viewport={{ once: true }} // Ensures it animates only once
           >
-            <h1 className="text-5xl mb-10">Our Guava Farm</h1>
-            <p>
-              Nestled in the heart of nature, our guava farm is dedicated to
-              cultivating the freshest, most flavorful guavas using sustainable
-              and eco-friendly farming practices.
-            </p>
+            <h1 className="text-5xl mb-10"> {t("subheader")}</h1>
+            <p>{t("para-1")}</p>
             <br />
-            <p>
-              We believe in the power of nature, ensuring that every fruit is
-              nurtured with care, free from harmful chemicals, and packed with
-              natural goodness.
-            </p>
+            <p>{t("para-2")}</p>
             <br />
-            <p>
-              Join us on this journey of freshness and flavor—experience guava
-              farming at its finest!
-            </p>
+            <p>{t("para-3")}</p>
           </motion.div>
         </div>
       </div>

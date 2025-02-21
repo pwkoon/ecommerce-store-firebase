@@ -4,9 +4,12 @@ import React from "react";
 import { motion } from "framer-motion";
 import ReviewForm from "./ReviewForm";
 import { useUser } from "@/lib/useUser";
+import { Link } from "@/i18n/routing";
+import { useTranslations } from "next-intl";
 
 function DirectReview() {
   const { user } = useUser();
+  const t = useTranslations("DirectReview");
 
   return (
     <>
@@ -32,17 +35,15 @@ function DirectReview() {
           className="relative z-10 text-center text-introWhite px-6"
         >
           {/* Sign Up / Sign In Button */}
-          {!user ? (
+          {user && user.username == "Guest" ? (
             <>
               <h1 className="text-4xl font-inria font-bold drop-shadow-lg">
-                Wish to leave a review on{" "}
-                <span className="text-yellow">GUAVA FARM</span>?
+                {t("info-1")} <span className="text-yellow">{t("info-2")}</span>
               </h1>
-              <p className="text-lg mt-3 opacity-80">
-                Join our community and share your experience!
-              </p>
+              <p className="text-lg mt-3 opacity-80">{t("info-3")}</p>
               <button className="mt-6 bg-yellow text-black font-bold py-3 px-6 rounded-xl shadow-lg hover:bg-opacity-90 transition-all duration-300">
-                <a href="/sign-up">Sign Up </a>/ <a href="/sign-in">Sign In</a>
+                <Link href="/sign-up">{t("sign-up")} </Link>/{" "}
+                <Link href="/sign-in">{t("sign-in")}</Link>
               </button>
             </>
           ) : (

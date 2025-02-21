@@ -3,8 +3,11 @@
 import useIntersectionObserver from "@/lib/useIntersectionObserver";
 import Navbar from "./Navbar";
 import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
+import LocaleSwitcher from "./LocaleSwitcher";
 
 function Banner() {
+  const t = useTranslations("Homepage");
   const activeSection = useIntersectionObserver([
     "banner",
     "about",
@@ -53,6 +56,9 @@ function Banner() {
     <>
       <Navbar activeSection={activeSection} showNavbar={showNavbar} />
       <div id="banner" className="bg-introWhite relative">
+        <div className="z-50 fixed float-right">
+          <LocaleSwitcher />
+        </div>
         <div className="bg-banner w-2/3 h-screen bg-cover bg-center shadow-md flex justify-center items-center">
           <div
             className="absolute right-20 bg-cover bg-start bg-no-repeat text-white px-4"
@@ -63,20 +69,31 @@ function Banner() {
               color: "transparent",
             }}
           >
-            <p>STORY OF</p>
-            <h1 className="font-inria text-8xl font-bold">Guardian of</h1>
+            <p>{t("smallTitle")}</p>
+            <h1 className="font-inria text-8xl font-bold">{t("title1")}</h1>
             <h1 className="text-end font-inria text-8xl font-bold">
-              the Fields
+              {t("title2")}
             </h1>
-            <p className="flex justify-end pb-4">
-              <a href="#about">Read more</a>
+            <p className="flex justify-end pb-4 pt-2">
+              <a href="#about">{t("read more")}</a>
             </p>
-            <hr className="flex float-right w-2/3" />
+            <hr className="flex float-right text-green w-1/3" />
           </div>
         </div>
       </div>
     </>
   );
 }
+
+// export async function getStaticProps({ locale }: GetStaticPropsContext) {
+//   // Load the translations for the current locale (you can also use getServerSideProps if needed)
+//   const messages = await import(`../../messages/${locale}.json`);
+
+//   return {
+//     props: {
+//       messages,
+//     },
+//   };
+// }
 
 export default Banner;

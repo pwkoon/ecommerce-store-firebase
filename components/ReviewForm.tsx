@@ -12,7 +12,7 @@ import { FaStar } from "react-icons/fa";
 import { useUser } from "@/lib/useUser";
 import { RefreshCwIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import { AnimatePresence, motion } from "framer-motion";
 
 type ReviewProps = {
@@ -91,7 +91,7 @@ function ReviewForm({ username }: ReviewProps) {
           className="float-right cursor-pointer"
         />
         <div className="max-w-[400px]">
-          <AnimatePresence mode="wait">
+          <AnimatePresence>
             {reviews.slice(0, 3).map((review) => (
               <motion.div
                 key={review.id} // Keep consistent keys for smooth animation

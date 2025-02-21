@@ -1,13 +1,16 @@
+import createNextIntlPlugin from "next-intl/plugin";
+
+const withNextIntl = createNextIntlPlugin();
+
 /** @type {import('next').NextConfig} */
-const isProd = process.env.NODE_ENV === "production";
+// const isProd = process.env.NODE_ENV === "production";
 
 const nextConfig = {
-  output: "export",
   // basePath: "./",
   poweredByHeader: false,
   reactStrictMode: true,
   // trailingSlash: true,
-  assetPrefix: isProd ? process.env.WEB_HOST : undefined,
+  // assetPrefix: isProd ? process.env.WEB_HOST : undefined,
   // assetPrefix: "./",
   // /* config options here */
   images: {
@@ -15,4 +18,4 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+export default withNextIntl(nextConfig);
