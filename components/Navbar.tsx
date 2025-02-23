@@ -104,14 +104,14 @@ export default function Navbar({ activeSection, showNavbar }: NavbarProps) {
             About
           </a>
           <a
-            href="#gallery"
+            href="#fruits"
             className="hover:text-yellow-400"
             onClick={() => setIsOpen(false)}
           >
             Fruits
           </a>
           <a
-            href="#review"
+            href="#contact"
             className="hover:text-yellow-400"
             onClick={() => setIsOpen(false)}
           >

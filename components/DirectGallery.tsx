@@ -8,7 +8,7 @@ function DirectGallery() {
 
   return (
     <>
-      <div className="grid grid-cols-2">
+      <div className="grid md:grid-cols-2">
         <div className="flex justify-around h-auto items-center">
           <div className="relative h-[500px] w-full bg-gallery bg-center flex items-center justify-center">
             {/* Background Overlay */}

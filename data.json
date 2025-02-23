@@ -1,0 +1,42 @@
+{
+  "gallery": [
+    { "description-1": "description 1" },
+    { "description-2": "description 2" },
+    { "description-3": "description 3" },
+    { "description-4": "description 4" },
+    { "description-5": "description 5" },
+    { "description-6": "description 6" }
+  ],
+  "images": [
+    {
+      "url": "/images/guava-1.jpg",
+      "title": "guava juice",
+      "description": "description 1"
+    },
+    {
+      "url": "/images/guava-2.jpg",
+      "title": "pink guava",
+      "description": "description 2"
+    },
+    {
+      "url": "/images/guava-3.jpg",
+      "title": "pink guava serving",
+      "description": "description 3"
+    },
+    {
+      "url": "/images/guava-4.jpg",
+      "title": "guava on tree",
+      "description": "description 4"
+    },
+    {
+      "url": "/images/guava-5.jpg",
+      "title": "guava with salt",
+      "description": "description 5"
+    },
+    {
+      "url": "/images/guava-6.jpg",
+      "title": "guava farming",
+      "description": "description 6"
+    }
+  ]
+}

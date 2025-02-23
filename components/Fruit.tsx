@@ -29,15 +29,15 @@ function Fruit() {
   return (
     <div
       id="fruits"
-      className="flex h-screen font-inria font-bold text-introWhite text-center mx-auto relative overflow-hidden"
+      className="flex flex-col md:flex-row h-auto md:h-screen font-inria font-bold text-introWhite text-center mx-auto relative overflow-hidden"
     >
       {/* Sidebar Navbar */}
-      <div className="flex flex-col bg-green items-center justify-center w-1/4 min-h-screen">
-        <div className="flex flex-col items-center justify-center bg-lightWhite w-full h-screen text-black">
+      <div className="flex flex-col bg-green items-center justify-center w-full md:w-1/4 min-h-[200px] md:min-h-screen">
+        <div className="flex flex-row md:flex-col items-center justify-center bg-lightWhite w-full md:h-screen text-black">
           {guavaDetails.map((guava) => (
             <div
               key={guava.id}
-              className={`px-12 py-10 rounded-l-[4rem] cursor-pointer transition-colors duration-300 w-full max-h-[200px] text-center ${
+              className={`px-6 py-4 md:px-12 md:py-10 rounded-none md:rounded-l-[4rem] cursor-pointer transition-colors duration-300 w-full text-center ${
                 selectedGuava.id === guava.id
                   ? "bg-green text-white"
                   : "bg-lightWhite text-black"
@@ -48,8 +48,9 @@ function Fruit() {
                 <Image
                   src={guava.image}
                   alt={guava.title}
-                  width={400}
+                  width={100}
                   height={50}
+                  className="w-20 h-20 md:w-40 md:h-40 object-contain"
                 />
               </div>
             </div>
@@ -58,7 +59,7 @@ function Fruit() {
       </div>
 
       {/* Guava Details */}
-      <div className="flex flex-col items-center justify-center w-full bg-green p-10">
+      <div className="flex flex-col-reverse md:flex-row bg-green items-center justify-center w-full p-5 md:p-10">
         <AnimatePresence mode="wait">
           <motion.div
             key={selectedGuava.id}
@@ -66,33 +67,41 @@ function Fruit() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.5 }}
-            className="max-w-2xl mx-auto text-center flex  jusitfy-center gap-20 items-center"
+            className="w-full max-w-2xl mx-auto text-center flex flex-col lg:flex-row justify-center lg:gap-20 items-center"
           >
-            <div className="pt-18">
+            <div className="md:pt-18">
               <div
-                className="flex justify-center items-center gap-5 border border-t-4 border-l-4 border-yellow w-full mx-auto px-5 py-3"
+                className="flex justify-center items-center gap-3 md:gap-5 border border-t-4 border-l-4 border-yellow w-2/3 lg:w-full mx-auto px-3 md:px-5 py-3"
                 style={{
                   clipPath:
                     "polygon(0% 0%, 100% 0%, 100% 90%, 50% 100%, 0% 100%)",
                 }}
               >
                 <div>
-                  <h1 className="font-inria text-3xl">{selectedGuava.title}</h1>
+                  <h1 className="font-inria text-2xl lg:text-3xl">
+                    {selectedGuava.title}
+                  </h1>
                   <hr className="my-2 border-yellow" />
-                  <h1 className="font-inria text-7xl">{t("Guava-A-1")}</h1>
+                  <h1 className="font-inria text-5xl md:text-7xl">
+                    {t("Guava-A-1")}
+                  </h1>
                 </div>
-                <h1 className="font-inria text-9xl">{selectedGuava.letter}</h1>
+                <h1 className="font-inria text-6xl md:text-9xl">
+                  {selectedGuava.letter}
+                </h1>
               </div>
-              <p className="text-xl p-4 max-w-lg">
+              <p className="text-md md:text-xl p-4 max-w-lg">
                 {selectedGuava.description}
               </p>
             </div>
+
             <Image
               src={selectedGuava.image}
               alt={selectedGuava.title}
               width={600}
               height={300}
-              className="w-[600px] h-[400px] object-cover col-span-2 mb-20"
+              className="w-full max-w-[350px] lg:w-[600px] h-auto object-cover"
+              priority
             />
           </motion.div>
         </AnimatePresence>

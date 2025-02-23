@@ -9,15 +9,15 @@ function Contact() {
   return (
     <div
       id="contact"
-      className="grid grid-cols-3 gap-10 p-10 bg-lightWhite text-black text-center"
+      className="grid md:grid-cols-3 gap-10 p-10 bg-lightWhite text-black text-center"
     >
-      <div className="col-span-2">
+      <div className="md:col-span-2">
         <Map />
       </div>
       <motion.h1
         className="bg-transparent border border-t-8 border-r-8 border-green text-green text-7xl"
         style={{
-          clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 50% 100%, 0% 50%)",
+          clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 50% 100%, 0% 70%)",
         }}
         initial={{ opacity: 0, x: 0 }}
         whileInView={{ opacity: 1, x: 0 }}

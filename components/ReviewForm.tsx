@@ -86,17 +86,17 @@ function ReviewForm({ username }: ReviewProps) {
   };
 
   return (
-    <div className="text-lightWhite text-lg grid grid-cols-3 items-center font-bold font-inria">
+    <div className="text-lightWhite text-lg grid lg:grid-cols-3 items-center font-bold font-inria gap-5 ">
       <div className="bg-aboutDark p-5 bg-opacity-50 rounded-xl flex-row mx-auto">
         <RefreshCwIcon
           onClick={handleShuffle}
           className="float-right cursor-pointer"
         />
-        <div className="max-w-[400px]">
+        <div className="">
           {reviews.slice(0, 3).map((review) => (
             <div
               key={review.id}
-              className="flex-row bg-lightWhite text-black rounded-xl my-7"
+              className="flex-row bg-lightWhite text-black rounded-xl p-5 my-7"
             >
               <p>{review.comments}</p>
               <p className="bg-darkYellow w-1/3">—{review.username}—</p>
@@ -108,7 +108,7 @@ function ReviewForm({ username }: ReviewProps) {
           <hr className="float-right w-3/4" />
         </div>
       </div>
-      <div className="col-span-2 mx-auto">
+      <div className="lg:col-span-2 mx-auto">
         <h1 className="text-xl pb-5">
           {t("hello")}{" "}
           <span className="bg-darkYellow text-aboutDark p-1">

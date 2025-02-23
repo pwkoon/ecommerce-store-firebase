@@ -56,12 +56,12 @@ function Banner() {
     <>
       <Navbar activeSection={activeSection} showNavbar={showNavbar} />
       <div id="banner" className="bg-introWhite relative">
-        <div className="z-50 fixed float-right">
+        <div className="fixed bottom-5 left-5 z-50">
           <LocaleSwitcher />
         </div>
         <div className="bg-banner w-2/3 h-screen bg-cover bg-center shadow-md flex justify-center items-center">
           <div
-            className="absolute right-20 bg-cover bg-start bg-no-repeat text-white px-4"
+            className="absolute right-0 md:right-20 bg-cover bg-start bg-no-repeat text-white px-4"
             style={{
               backgroundImage: `url('https://images.unsplash.com/photo-1596404815741-adf337d685f0?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')`,
               backgroundClip: "text",
@@ -70,8 +70,10 @@ function Banner() {
             }}
           >
             <p>{t("smallTitle")}</p>
-            <h1 className="font-inria text-8xl font-bold">{t("title1")}</h1>
-            <h1 className="text-end font-inria text-8xl font-bold">
+            <h1 className="font-inria text-5xl md:text-8xl font-bold">
+              {t("title1")}
+            </h1>
+            <h1 className="text-end font-inria text-5xl md:text-8xl font-bold">
               {t("title2")}
             </h1>
             <p className="flex justify-end pb-4 pt-2">
