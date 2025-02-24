@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { onAuthStateChanged, reload, User } from "firebase/auth";
-import { auth } from "../firebase/config";
+import { auth } from "../../firebase/firebase-client";
 import { useRouter } from "next/navigation";
 
 const VerifyEmailPage: React.FC = () => {
