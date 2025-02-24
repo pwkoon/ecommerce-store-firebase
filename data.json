@@ -1,42 +1,54 @@
 {
   "gallery": [
-    { "description-1": "description 1" },
-    { "description-2": "description 2" },
-    { "description-3": "description 3" },
-    { "description-4": "description 4" },
-    { "description-5": "description 5" },
-    { "description-6": "description 6" }
+    {
+      "description-1": "Guava juice packed with vitamin C, antioxidants, and fiber, making it a great choice for boosting immunity and promoting digestion."
+    },
+    {
+      "description-2": "Freshly sliced guavas on a wooden cutting board, with pink interiors contrasting against their green skin and a coral-colored background"
+    },
+    {
+      "description-3": "Known for its health benefits, guava supports digestion and boosts immunity due to its high fiber and vitamin content."
+    },
+    {
+      "description-4": "A guava tree branch with green guavas hanging among vibrant leaves, illuminated by natural sunlight"
+    },
+    {
+      "description-5": "Guava is a tropical fruit with a sweet, fragrant aroma and a slightly grainy texture."
+    },
+    {
+      "description-6": "Close-up of a cultivated field with young plants sprouting from freshly plowed soil, bathed in warm golden sunlight"
+    }
   ],
   "images": [
     {
       "url": "/images/guava-1.jpg",
       "title": "guava juice",
-      "description": "description 1"
+      "description": "Guava juice packed with vitamin C, antioxidants, and fiber, making it a great choice for boosting immunity and promoting digestion."
     },
     {
       "url": "/images/guava-2.jpg",
       "title": "pink guava",
-      "description": "description 2"
+      "description": "Freshly sliced guavas on a wooden cutting board, with pink interiors contrasting against their green skin and a coral-colored background"
     },
     {
       "url": "/images/guava-3.jpg",
       "title": "pink guava serving",
-      "description": "description 3"
+      "description": "Known for its health benefits, guava supports digestion and boosts immunity due to its high fiber and vitamin content."
     },
     {
       "url": "/images/guava-4.jpg",
       "title": "guava on tree",
-      "description": "description 4"
+      "description": "A guava tree branch with green guavas hanging among vibrant leaves, illuminated by natural sunlight"
     },
     {
       "url": "/images/guava-5.jpg",
       "title": "guava with salt",
-      "description": "description 5"
+      "description": "Guava is a tropical fruit with a sweet, fragrant aroma and a slightly grainy texture."
     },
     {
       "url": "/images/guava-6.jpg",
       "title": "guava farming",
-      "description": "description 6"
+      "description": "Close-up of a cultivated field with young plants sprouting from freshly plowed soil, bathed in warm golden sunlight"
     }
   ]
 }

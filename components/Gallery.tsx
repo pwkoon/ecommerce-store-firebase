@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import mockdata from "../data.json";
 import Image from "next/image";
+import React from "react";
 
 interface ProductImageProps {
   id: number;
@@ -93,21 +94,22 @@ const Gallery: React.FC = () => {
             </LayoutGroup>
           </div>
         ) : (
-          <div className="flex-row justify-center p-10">
+          <div className="grid md:grid-cols-2 gap-10 justify-around p-10">
             {mockdata.images.map((image, index) => (
-              <>
-                <Image
-                  key={index}
-                  src={image.url}
-                  width={400}
-                  height={300}
-                  alt={image.title}
-                  className="max-h-[300px] object-cover mt-5"
-                />
-                <div className="w-auto bg-aboutDark text-darkYellow text-center">
-                  {image.description}
+              <React.Fragment key={index}>
+                <div>
+                  <Image
+                    src={image.url}
+                    width={400}
+                    height={300}
+                    alt={image.title}
+                    className="max-h-[200px] object-cover mt-5"
+                  />
+                  <div className="bg-aboutDark text-darkYellow text-center">
+                    {image.description}
+                  </div>
                 </div>
-              </>
+              </React.Fragment>
             ))}
           </div>
         )}

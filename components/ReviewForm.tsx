@@ -11,8 +11,7 @@ import { db } from "@/firebase/firebase-client";
 import { FaStar } from "react-icons/fa";
 import { useUser } from "@/lib/useUser";
 import { RefreshCwIcon } from "lucide-react";
-import { useRouter } from "next/navigation";
-import { Link } from "@/i18n/routing";
+import { Link, useRouter } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
 
 type ReviewProps = {
