@@ -37,6 +37,9 @@ const SignUpPage: React.FC = () => {
       );
       const user = userCredential.user;
 
+      // ✅ Store userId immediately in localStorage before Firestore operations
+      localStorage.setItem("userId", user.uid);
+
       // Save user data to Firestore
       await setDoc(doc(db, "users", user.uid), {
         username,
@@ -50,22 +53,18 @@ const SignUpPage: React.FC = () => {
         "Account created successfully. A verification email has been sent to your email address."
       );
 
+      // Retrieve user role from Firestore
       const docSnap = await getDoc(doc(db, "users", user.uid));
       if (docSnap.exists()) {
         const email = docSnap.data().email;
 
-        // Store the username in local storage or use it directly in the UI
-        if (email === process.env.NEXT_PUBLIC_ADMIN_EMAIL) {
-          setUserRole(user.uid, "admin");
-        } else {
-          setUserRole(user.uid, "user");
-        }
-
-        // Store the username in local storage or use it directly in the UI
-        localStorage.setItem("userId", user.uid);
+        // ✅ Assign role properly
+        const role =
+          email === process.env.NEXT_PUBLIC_ADMIN_EMAIL ? "admin" : "user";
+        await setUserRole(user.uid, role);
       }
 
-      // Optionally redirect to a "check your email" page
+      // Redirect to email verification page
       router.push("/verify-email");
     } catch (error: unknown) {
       if (typeof error === "object" && error !== null && "code" in error) {
