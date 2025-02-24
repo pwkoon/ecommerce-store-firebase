@@ -103,7 +103,7 @@ const Gallery: React.FC = () => {
                     width={400}
                     height={300}
                     alt={image.title}
-                    className="max-h-[200px] object-cover mt-5"
+                    className="max-h-[250px] object-cover mt-5"
                   />
                   <div className="bg-aboutDark text-darkYellow text-center">
                     {image.description}

@@ -19,22 +19,29 @@ type ReviewType = {
 function Review() {
   const t = useTranslations("Review");
   const [reviews, setReviews] = useState<ReviewType[]>([]);
+  const [isClient, setIsClient] = useState(false); // Add state to ensure code runs only on client
 
   useEffect(() => {
-    const reviewsRef = collection(db, "reviews");
-    const q = query(reviewsRef);
-
-    const unsubscribe = onSnapshot(q, (snapshot) => {
-      const reviewData = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      })) as ReviewType[];
-
-      setReviews(reviewData);
-    });
-
-    return () => unsubscribe();
+    setIsClient(true); // Set to true once the component mounts on the client
   }, []);
+
+  useEffect(() => {
+    if (isClient) {
+      const reviewsRef = collection(db, "reviews");
+      const q = query(reviewsRef);
+
+      const unsubscribe = onSnapshot(q, (snapshot) => {
+        const reviewData = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        })) as ReviewType[];
+
+        setReviews(reviewData);
+      });
+
+      return () => unsubscribe();
+    }
+  }, [isClient]);
 
   return (
     <div className="bg-green h-100 text-lightWhite p-5 font-bold text-5xl text-center">

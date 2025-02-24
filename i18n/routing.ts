@@ -29,6 +29,10 @@ export const routing = defineRouting({
       en: "/sign-up",
       "zh-CN": "/sign-up",
     },
+    "/verify-email": {
+      en: "/verify-email",
+      "zh-CN": "/verify-email",
+    },
   },
 });
 
