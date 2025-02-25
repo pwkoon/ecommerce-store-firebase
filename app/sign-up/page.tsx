@@ -88,11 +88,14 @@ const SignUpPage: React.FC = () => {
       <Head>
         <title>Sign Up</title>
       </Head>
-      <div className="relative min-h-screen flex items-center justify-center bg-signUp bg-center bg-cover text-white">
-        <div className="bg-black w-full h-screen flex items-center justify-around bg-opacity-50">
+      <div className="relative min-h-screen flex-row items-center justify-center bg-signUp bg-center bg-cover text-white ">
+        <div className="fixed font-inria font-bold text-2xl md:text-3xl p-2 text-lightWhite">
+          <Link href={"/"}>Guava Farm</Link>
+        </div>
+        <div className="bg-black w-full  h-screen flex items-center justify-around bg-opacity-50">
           {/* Moving Images */}
           <div
-            className="relative w-[500px] h-[380px] border-2 flex justify-center items-center overflow-hidden transition-all duration-500"
+            className="hidden md:flex relative w-[500px] h-[380px] border-2 justify-center items-center overflow-hidden transition-all duration-500  mx-auto "
             style={{
               clipPath: "polygon(0% 5%, 100% 0%, 100% 90%, 40% 100%, 0% 100%)",
             }}
@@ -119,8 +122,8 @@ const SignUpPage: React.FC = () => {
             </div>
           </div>
 
-          <div className="w-full max-w-md p-6 bg-gray-900 rounded-lg shadow-xl">
-            <h1 className="text-6xl text-yellow font-inria font-bold mb-6 text-center">
+          <div className="w-full max-w-md p-6 bg-gray-900 rounded-lg shadow-2xl mx-auto md:shadow-xl">
+            <h1 className="text-4xl md:text-6xl text-yellow font-inria font-bold mb-6 text-center">
               Sign Up
             </h1>
             <form onSubmit={handleSignUp} className="space-y-4">

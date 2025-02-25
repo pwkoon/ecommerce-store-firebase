@@ -4,7 +4,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import ReviewForm from "./ReviewForm";
 import { useUser } from "@/lib/useUser";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
 
 function DirectReview() {
@@ -14,7 +14,7 @@ function DirectReview() {
   return (
     <>
       {/* Background Image Section */}
-      <div className="h-[300px] md:h-[500px] w-full bg-review bg-center bg-cover"></div>
+      {/* <div className="h-[300px] md:h-[500px] w-full bg-review bg-center bg-cover"></div> */}
 
       {/* Overlay & Content Section */}
       <div className="relative h-100 p-20 lg:h-screen w-full bg-review bg-center flex items-center justify-center px-4 md:px-10">

@@ -16,13 +16,13 @@ function DirectGallery() {
 
             {/* Content */}
             <div className="relative z-10 text-center text-introWhite px-6">
-              <h1 className="text-5xl font-inria font-bold drop-shadow-lg">
+              <h1 className="text-4xl md:text-5xl font-inria font-bold drop-shadow-lg">
                 <Link href={"/gallery"}>{t("Gallery")}</Link>
               </h1>
             </div>
           </div>
         </div>
-        <div className="h-[500px] w-full bg-gallery bg-center bg-cover"></div>
+        <div className="h-auto w-full bg-gallery bg-center bg-cover"></div>
       </div>
     </>
   );

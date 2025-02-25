@@ -51,6 +51,7 @@ function Fruit() {
                   width={100}
                   height={50}
                   className="w-20 h-20 md:w-40 md:h-40 object-contain"
+                  priority
                 />
               </div>
             </div>
@@ -100,7 +101,7 @@ function Fruit() {
               alt={selectedGuava.title}
               width={600}
               height={300}
-              className="w-full max-w-[350px] lg:w-[600px] h-auto object-cover"
+              className="w-full max-w-[350px] lg:w-[600px] h-100 object-cover"
               priority
             />
           </motion.div>

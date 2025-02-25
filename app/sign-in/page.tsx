@@ -57,12 +57,12 @@ const SignInPage: React.FC = () => {
         <title>Sign In</title>
       </Head>
       <div className="bg-signUp bg-center ">
-        <div className="font-inria font-bold text-3xl p-2 text-green">
+        <div className="font-inria font-bold text-2xl md:text-3xl p-2 text-green">
           <Link href={"/"}>Guava Farm</Link>
         </div>
-        <div className="min-h-screen flex items-center justify-center text-white">
+        <div className="min-h-screen flex items-center justify-center p-5 text-white">
           <div className="bg-lightWhite bg-opacity-75 w-full max-w-md p-6 bg-gray-800 rounded-lg shadow-md">
-            <h1 className="text-6xl text-green font-inria font-bold mb-6 text-center">
+            <h1 className="text-4xl md:text-6xl text-green font-inria font-bold mb-6 text-center">
               Sign In
             </h1>
             <form onSubmit={handleSignIn} className="space-y-4">
