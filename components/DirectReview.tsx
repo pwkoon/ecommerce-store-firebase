@@ -4,7 +4,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import ReviewForm from "./ReviewForm";
 import { useUser } from "@/lib/useUser";
-import { Link } from "@/i18n/routing";
+import Link from "next/link";
 import { useTranslations } from "next-intl";
 
 function DirectReview() {

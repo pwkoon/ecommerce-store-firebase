@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   createUserWithEmailAndPassword,
   sendEmailVerification,
@@ -10,7 +10,8 @@ import { auth, db } from "../../../firebase/firebase-client";
 import Head from "next/head";
 import { setUserRole } from "@/lib/setUserRole";
 import Image from "next/image";
-import { Link, useRouter } from "@/i18n/routing";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const SignUpPage: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -19,18 +20,8 @@ const SignUpPage: React.FC = () => {
   const [error, setError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const [isTyping, setIsTyping] = useState(false);
-  const [mounted, setMounted] = useState(false); // Track if the component has mounted
 
   const router = useRouter();
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  // Ensure that translation and router hooks only run after component mounts
-  if (!mounted) {
-    return null; // Avoid rendering the component during server-side rendering
-  }
 
   const handleSignUp = async (e: React.FormEvent) => {
     e.preventDefault();

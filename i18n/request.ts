@@ -1,7 +1,6 @@
 // import { notFound } from "next/navigation";
 import { getRequestConfig } from "next-intl/server";
 import { headers } from "next/headers"; // ✅ Import headers
-
 import { routing } from "./routing";
 
 export const locales = ["en", "zh-CN"];

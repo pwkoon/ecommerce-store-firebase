@@ -1,28 +1,18 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../../firebase/firebase-client";
+import { auth } from "../../../firebase/firebase-client"; // Import Firebase config
 import Head from "next/head";
 import { useRouter } from "next/navigation";
-import { Link } from "@/i18n/routing";
+import Link from "next/link";
 
 const SignInPage: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const [mounted, setMounted] = useState(false); // Track if the component has mounted
 
   const router = useRouter();
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-    // Ensure that translation and router hooks only run after component mounts
-    if (!mounted) {
-      return null; // Avoid rendering the component during server-side rendering
-    }
 
   const handleSignIn = async (e: React.FormEvent) => {
     e.preventDefault();
