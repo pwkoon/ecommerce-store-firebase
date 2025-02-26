@@ -14,14 +14,14 @@ function Fruit() {
       title: t("Guava-A"),
       letter: t("Guava-A-2"),
       description: t("Guava-A-description"),
-      image: "/guavaa.png",
+      image: "/guavaA.avif",
     },
     {
       id: 2,
       title: t("Guava-B"),
       letter: t("Guava-B-2"),
       description: t("Guava-B-description"),
-      image: "/guavaa2.png",
+      image: "/guavaB.avif",
     },
   ];
   const [selectedGuava, setSelectedGuava] = useState(guavaDetails[0]);
@@ -95,7 +95,6 @@ function Fruit() {
                 {selectedGuava.description}
               </p>
             </div>
-
             <Image
               src={selectedGuava.image}
               alt={selectedGuava.title}

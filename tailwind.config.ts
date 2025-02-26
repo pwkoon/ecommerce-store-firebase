@@ -10,14 +10,11 @@ export default {
   theme: {
     extend: {
       backgroundImage: {
-        banner:
-          "url('https://images.unsplash.com/photo-1596404815741-adf337d685f0?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
-        about:
-          "url('https://images.unsplash.com/photo-1492496913980-501348b61469?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
+        about: "url('/guava-about.avif')",
         signUp:
           "url('https://images.unsplash.com/photo-1507158019112-5ba54ff1c84f?q=80&w=1752&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
-        gallery: "url('/gallery.jpg')",
-        review: "url('/review.jpg')",
+        gallery: "url('/gallery.avif')",
+        review: "url('/review.avif')",
       },
       colors: {
         aboutDark: "#1D201F",

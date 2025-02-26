@@ -95,7 +95,7 @@ export default function Navbar({ activeSection, showNavbar }: NavbarProps) {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="z-50 fixed top-14 left-0 w-full bg-green-800 text-white flex flex-col gap-4 p-6 shadow-lg md:hidden">
+        <div className="z-50 fixed top-14 left-0 w-full bg-aboutDark bg-opacity-75 text-white flex flex-col gap-4 p-6 shadow-lg md:hidden">
           <a
             href="#about"
             className="hover:text-yellow-400"
@@ -117,6 +117,17 @@ export default function Navbar({ activeSection, showNavbar }: NavbarProps) {
           >
             Contact
           </a>
+          {user && user.username != "Guest" ? (
+            <>
+              <p className="bg-darkYellow p-2 text-green font-inria font-bold w-1/2">
+                {" "}
+                {t("hello")} {user.username}
+              </p>
+              <LogoutButton />
+            </>
+          ) : (
+            ""
+          )}
         </div>
       )}
     </>
