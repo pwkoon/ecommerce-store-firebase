@@ -14,14 +14,14 @@ function Fruit() {
       title: t("Guava-A"),
       letter: t("Guava-A-2"),
       description: t("Guava-A-description"),
-      image: "/guavaA.avif",
+      image: "/images/guavaA.avif",
     },
     {
       id: 2,
       title: t("Guava-B"),
       letter: t("Guava-B-2"),
       description: t("Guava-B-description"),
-      image: "/guavaB.avif",
+      image: "/images/guavaB.avif",
     },
   ];
   const [selectedGuava, setSelectedGuava] = useState(guavaDetails[0]);
