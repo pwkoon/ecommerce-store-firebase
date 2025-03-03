@@ -28,17 +28,17 @@ const ProductImage: React.FC<ProductImageProps> = ({ id, onExpand }) => {
 const Gallery: React.FC = () => {
   const [productIds, setProductIds] = useState<number[]>([1, 2, 3, 5, 6]);
   const [primaryProduct, setPrimaryProduct] = useState<number>(4);
-  const [isLaptop, setIsLaptop] = useState<boolean>(false);
+  const [isLaptop, setIsLaptop] = useState<boolean | null>(null);
 
   const t = useTranslations("Gallery");
 
   useEffect(() => {
-    const handleResize = () => {
-      setIsLaptop(window.innerWidth >= 1024 && window.innerWidth < 1440);
+    const detectScreenSize = () => {
+      setIsLaptop(window.innerWidth >= 1440 && window.innerWidth < 2650);
     };
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    detectScreenSize();
+    window.addEventListener("resize", detectScreenSize);
+    return () => window.removeEventListener("resize", detectScreenSize);
   }, []);
 
   const setAsPrimary = (id: number) => {
@@ -59,12 +59,16 @@ const Gallery: React.FC = () => {
       ]
     : "No description available";
 
+  if (isLaptop === null) {
+    return null; // Prevent initial incorrect rendering
+  }
+
   return (
     <>
-      <div className="bg-lightWhite p-5 text-aboutDark font-bold text-7xl text-center">
+      <div className="bg-lightWhite p-5 text-aboutDark font-bold text-4xl md:text-7xl text-center">
         <Link href={"/"}>Guava Farm&apos;s {t("title")}</Link>
       </div>
-      <div className="h-100 bg-lightWhite p-5">
+      <div className="h-auto 2xl:h-screen bg-lightWhite p-5 flex justify-center">
         {isLaptop ? (
           <div className="container p-20">
             <LayoutGroup>
@@ -94,23 +98,26 @@ const Gallery: React.FC = () => {
             </LayoutGroup>
           </div>
         ) : (
-          <div className="grid md:grid-cols-2 gap-10 justify-around p-10">
+          <div className="grid md:grid-cols-2 gap-20">
             {mockdata.images.map((image, index) => (
-              <React.Fragment key={index}>
-                <div>
+              <div
+                key={index}
+                className="max-w-[400px] h-[350px] flex flex-col shadow-lg border"
+              >
+                <div className="flex-shrink-0 h-[250px] overflow-hidden">
                   <Image
                     src={image.url}
                     width={400}
-                    height={300}
+                    height={200}
                     alt={image.title}
-                    className="max-h-[250px] object-cover mt-5"
+                    className="w-full h-full object-cover"
                     loading="lazy"
                   />
-                  <div className="bg-aboutDark text-darkYellow text-center">
-                    {image.description}
-                  </div>
                 </div>
-              </React.Fragment>
+                <div className="bg-aboutDark text-darkYellow text-center flex-grow flex items-center justify-center p-2">
+                  <p className="overflow-auto">{image.description}</p>
+                </div>
+              </div>
             ))}
           </div>
         )}

@@ -19,12 +19,14 @@ export default {
       colors: {
         aboutDark: "#1D201F",
         introWhite: "#F7F0F5",
-        green: "#4B543B",
+        green: "#3B413C",
         gray: "#588157",
         yellow: "#F7E7CE",
         cardLightYellow: "#E4D7B7",
         lightWhite: "#E4DFDA",
         darkYellow: "#F5CB5C",
+        grey: "#B7B7B7",
+        white: "#F5F5F7",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {

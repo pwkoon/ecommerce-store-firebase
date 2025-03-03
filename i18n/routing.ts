@@ -21,6 +21,10 @@ export const routing = defineRouting({
       en: "/gallery",
       "zh-CN": "/gallery",
     },
+    "/about": {
+      en: "/about",
+      "zh-CN": "/about",
+    },
     "/sign-in": {
       en: "/sign-in",
       "zh-CN": "/sign-in",

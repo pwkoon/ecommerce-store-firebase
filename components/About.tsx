@@ -1,5 +1,6 @@
 "use client";
 
+import { Link } from "@/i18n/routing";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 
@@ -39,6 +40,13 @@ function About() {
           <p className="text-lg sm:text-xl">{t("para-2")}</p>
           <br />
           <p className="text-lg sm:text-xl">{t("para-3")}</p>
+          <br />
+          <Link
+            className="font-inria font-bold text-xl bg-darkYellow text-aboutDark p-2"
+            href={"/about"}
+          >
+            {t("know more")}
+          </Link>
         </motion.div>
       </div>
     </div>

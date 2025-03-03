@@ -56,7 +56,10 @@ function Banner() {
   return (
     <>
       <Navbar activeSection={activeSection} showNavbar={showNavbar} />
-      <div id="banner" className="relative h-screen flex items-center">
+      <div
+        id="banner"
+        className="relative h-[500px] md:h-screen flex items-center"
+      >
         <div className="relative w-2/3 h-full">
           <Background
             src={
