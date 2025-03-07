@@ -8,8 +8,11 @@ function About() {
   const t = useTranslations("About");
 
   return (
-    <div id="about" className="bg-about bg-fixed bg-center bg-cover py-20 px-5">
-      <div className="font-inria font-bold text-introWhite text-center mx-auto max-w-4xl">
+    <div className="bg-about bg-fixed bg-center bg-cover py-20 px-5">
+      <div
+        id="about"
+        className="font-inria font-bold text-introWhite text-center mx-auto max-w-4xl"
+      >
         {/* "ABOUT" Title with Scroll-triggered Animation */}
         <motion.h1
           className="relative lg:right-20 lg:top-10 bg-transparent border border-t-8 border-l-8 border-yellow p-5 md:p-10 text-yellow text-5xl sm:text-7xl lg:text-9xl inline-block"

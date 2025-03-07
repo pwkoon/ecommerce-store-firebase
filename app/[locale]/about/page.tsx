@@ -1,10 +1,37 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { Link } from "@/i18n/routing";
 import { FaQuoteLeft, FaQuoteRight } from "react-icons/fa";
 import ScrollToTop from "@/components/ScrollToTop";
+import Modal from "@/components/Modal";
+import mockdata from "../../../data.json";
+import { AnimatePresence, motion } from "framer-motion";
 
 function About() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  const fadeInVariants = {
+    hidden: { opacity: 0, y: 50 }, // Start slightly below with opacity 0
+    visible: (index: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, delay: index * 0.3 }, // Stagger effect
+    }),
+  };
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768); // Adjust breakpoint as needed
+    };
+
+    handleResize(); // Check on mount
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <>
       <ScrollToTop />
@@ -29,7 +56,13 @@ function About() {
             </Link>
           </div>
           <div className="grid sm:grid-cols-4 pt-5 sm:p-10">
-            <div className="sm:col-span-3 mx-auto">
+            <motion.div
+              className="sm:col-span-3 mx-auto"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 1 }}
+              viewport={{ once: true }}
+            >
               <Image
                 src={"/images/gallery.avif"}
                 width={500}
@@ -37,8 +70,8 @@ function About() {
                 alt="farmer pic"
                 className="h-[500px] md:max-h-[710px] object-cover"
               />
-            </div>
-            <div className="text-center mx-auto w-max py-8 sm:pt-[20rem]">
+            </motion.div>
+            <div className="text-center md:text-start mx-auto w-max py-8 sm:pt-[20rem]">
               <p className="sm:-rotate-90 ">
                 From soil to sweetness <br />
                 Rooted in care, grown with passion.
@@ -46,28 +79,50 @@ function About() {
             </div>
           </div>
           {/* From Foundations to Fields */}
-          <div className="max-w-[800px] mx-auto bg-lightWhite p-3 sm:py-10 sm:px-5 md:py-28 md:px-10 h-[500px]">
-            <h1 className="text-2xl sm:text-4xl md:text-6xl font-bold text-end sm:leading-loose">
+          <div className="max-w-[800px] mx-auto bg-lightWhite p-3 py-10 px-5 sm:py-28 sm:px-10 h-[35rem] md:h-[500px]">
+            <motion.h1
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 1 }}
+              viewport={{ once: true }}
+              className="text-2xl sm:text-4xl md:text-6xl font-bold text-end sm:leading-loose"
+            >
               From Foundations to Fields
-            </h1>
+            </motion.h1>
             <hr className="border-t-2 md:border-t-8 border-black pb-5" />
             <div className="text-md max-w-[400px] text-end flex-inline float-right">
-              <p>
+              <motion.p
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 1 }}
+                viewport={{ once: true }}
+              >
                 Once a skilled construction worker, he left the world of bricks
                 to embrace farming, starting with lime and corn. Through
                 patience and care, he learned the rhythms of agriculture.
-              </p>
+              </motion.p>
               <br />
-              <p>
+              <motion.p
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 1 }}
+                viewport={{ once: true }}
+              >
                 His dedication turned a small farm into a thriving guava
                 orchard. The same hands that built homes now nurtured trees,
                 showcasing the power of reinvention and the rewards of following
                 his passion.
-              </p>
+              </motion.p>
             </div>
           </div>
           {/* Paddy field no paddy but fruits */}
-          <div className="grid sm:grid-cols-2 max-w-[800px] overflow-hidden mx-auto">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1, y: -10 }}
+            transition={{ duration: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="grid sm:grid-cols-2 max-w-[800px] overflow-hidden mx-auto"
+          >
             <Image
               src={"/images/construction.avif"}
               width={400}
@@ -82,7 +137,7 @@ function About() {
               alt="farmer"
               className="max-h-[710px] z-50"
             />
-          </div>
+          </motion.div>
           {/* transition */}
           <div className="max-w-[600px] mx-auto p-10">
             <p className="text-center  text-justify sm:text-lg md:text-2xl leading-7 md:leading-9 pt-2 md:pt-20">
@@ -148,45 +203,61 @@ function About() {
         </div>
         {/* guava's story */}
         <div className="max-w-[800px] flex-row md:flex items-center mx-auto p-10 gap-10">
-          <h1 className="text-center text-4xl sm:text-6xl md:text-8xl font-bold">
-            BEGIN...{" "}
-          </h1>
-          <p className="pt-5 md:pt-0 text-justify">
+          <motion.h1
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1, x: -50 }}
+            transition={{ duration: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="text-center text-6xl md:text-8xl font-bold"
+          >
+            BEGIN...
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1, x: isMobile ? 0 : 50 }}
+            transition={{ duration: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="pt-5 md:pt-0 text-justify"
+          >
             Nestled in nature&apos;s embrace, our guava farm began with a
             passion for cultivating the finest, sun-kissed guavas. Rooted in
             sustainable practices, we nurture every tree with care, ensuring
             each fruit bursts with natural sweetness. From our farm to your
             table, we bring you the freshest, most flavorful guavas—grown with
             love, harvested at peak perfection.
-          </p>
+          </motion.p>
         </div>
         {/* from seed to fruits */}
         <div className="max-w-[800px] grid sm:grid-cols-2 md:grid-cols-3 sm:p-10 gap-5 mx-auto">
-          <div
+          <AnimatePresence>
+            {mockdata.process.map((item, index) => (
+              <motion.div
+                key={index}
+                variants={fadeInVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }} // Triggers when 20% of element is visible
+                custom={index} // Custom index for stagger effect
+              >
+                <Modal
+                  title={item.title}
+                  subtitle={item.subtitle}
+                  descriptions={item.description}
+                />
+              </motion.div>
+            ))}
+          </AnimatePresence>
+
+          {/* <div
             className="p-16 sm:p-20 bg-green rounded-full mx-auto text-xl text-center text-lightWhite cursor-pointer 
                 transition-transform duration-[2000ms] ease-out bg-center bg-cover bg-green 
                 hover:bg-[url(/images/guavas.avif)] hover:bg-no-repeat hover:brightness-110"
           >
             Month 1/2
-          </div>
-          <div className="p-16 sm:p-20 bg-green rounded-full mx-auto text-xl text-center text-lightWhite cursor-pointer">
-            Month 3/4
-          </div>
-          <div className="p-16 sm:p-20 bg-green rounded-full mx-auto text-xl text-center text-lightWhite cursor-pointer">
-            Month 5/6
-          </div>
-          <div className="p-16 sm:p-20 bg-green rounded-full mx-auto text-xl text-center text-lightWhite cursor-pointer">
-            Month 7/8
-          </div>
-          <div className="p-16 sm:p-20 bg-green rounded-full mx-auto text-xl text-center text-lightWhite cursor-pointer">
-            Month 9/10
-          </div>
-          <div className="p-16 sm:p-20 bg-green rounded-full mx-auto text-xl text-center text-lightWhite cursor-pointer">
-            Month 11/12
-          </div>
+          </div> */}
         </div>
         {/* gif / video */}
-        <div className="flex relative">
+        <div className="flex">
           <Image
             src={"/images/field.avif"}
             width={600}
@@ -194,7 +265,7 @@ function About() {
             alt="field"
             className="mx-auto pt-5 sm:w-[500px] md:w-[600px]"
           />
-          <div className="border-4 border-lightWhite px-16 py-20 md:px-36 md:py-44 absolute top-[7rem] left-[3rem] md:top-60 md:left-[28rem]"></div>
+          {/* <div className="border-4 border-lightWhite px-16 py-20 md:px-36 md:py-44 absolute top-[7rem] left-[3rem] md:top-60 md:left-[28rem]"></div> */}
         </div>
         <div className="mx-auto max-w-[600px] pb-16 p-7 sm:p-20">
           <FaQuoteLeft className="text-4xl md:text-6xl" />
@@ -213,11 +284,11 @@ function About() {
             width={500}
             height={400}
             alt="guavas"
-            className="w-60 md:h-[400px] object-cover"
+            className="mx-auto w-60 md:h-[400px] object-cover"
           />
           <div className="hidden md:flex h-100 border-l-2 border-gray-500"></div>
-          <div className="w-60 text-lg pt-5 md:pt-36">
-            <p>
+          <div className="mx-auto w-40 sm:w-60 text-lg pt-5 md:pt-36">
+            <p className="text-justify">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
               enim ad minim veniam, quis nostrud exercitation ullamco laboris
@@ -225,9 +296,9 @@ function About() {
             </p>
           </div>
         </div>
-        <div className="md:flex mx-auto max-w-[600px] md:gap-5">
-          <div className="w-60 text-lg pt-10 md:pt-52">
-            <p>
+        <div className="mx-auto md:flex mx-auto max-w-[600px] md:gap-5">
+          <div className="mx-auto w-40 sm:w-60 text-lg pt-10 md:pt-52">
+            <p className="text-justify">
               Duis aute irure dolor in reprehenderit in voluptate velit esse
               cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
               cupidatat non proident, sunt in culpa qui officia deserunt mollit
@@ -240,12 +311,15 @@ function About() {
             width={500}
             height={400}
             alt="guavas"
-            className="w-60 md:h-[500px] object-cover pt-5 md:pt-36"
+            className="mx-auto w-60 md:h-[500px] object-cover pt-5 md:pt-36"
           />
         </div>
         {/* never end */}
         <div className="p-10 md:p-20 mx-auto text-center max-w-[900px] leading-loose">
-          <h1 className="text-6xl md:text-8xl font-bold">NEVER END</h1>
+          <p>End of the Story</p>
+          <h3>BUT</h3>
+          <h1 className="text-5xl md:text-8xl font-bold">NEVER END</h1>
+          <h3>The Journey</h3>
           <hr />
           <p className="italic">
             Nurturing nature, harvesting longevity — our guava farm grows with

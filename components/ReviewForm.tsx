@@ -1,17 +1,10 @@
-import React, { useEffect, useState } from "react";
-import {
-  serverTimestamp,
-  addDoc,
-  collection,
-  query,
-  onSnapshot,
-  Timestamp,
-} from "firebase/firestore";
+import React, { useState } from "react";
+import { serverTimestamp, addDoc, collection } from "firebase/firestore";
 import { db } from "@/firebase/firebase-client";
 import { FaStar } from "react-icons/fa";
 import { useUser } from "@/lib/useUser";
-import { RefreshCwIcon } from "lucide-react";
-import { Link } from "@/i18n/routing";
+// import { RefreshCwIcon } from "lucide-react";
+// import { Link } from "@/i18n/routing";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 
@@ -19,15 +12,14 @@ type ReviewProps = {
   username: string;
 };
 
-type ReviewType = {
-  id: string;
-  userId: string;
-  username: string;
-  comments: string;
-  rating: number;
-  createdAt: Timestamp;
-};
-
+// type ReviewType = {
+//   id: string;
+//   userId: string;
+//   username: string;
+//   comments: string;
+//   rating: number;
+//   createdAt: Timestamp;
+// };
 function ReviewForm({ username }: ReviewProps) {
   const [comments, setComments] = useState("");
   const [rating, setRating] = useState<number>(5); // Default rating
@@ -35,24 +27,24 @@ function ReviewForm({ username }: ReviewProps) {
   const { user } = useUser();
   const router = useRouter();
 
-  const [reviews, setReviews] = useState<ReviewType[]>([]);
+  // const [reviews, setReviews] = useState<ReviewType[]>([]);
 
   const t = useTranslations("ReviewForm");
 
-  useEffect(() => {
-    const reviewsRef = collection(db, "reviews");
-    const q = query(reviewsRef);
+  // useEffect(() => {
+  //   const reviewsRef = collection(db, "reviews");
+  //   const q = query(reviewsRef);
 
-    const unsubscribe = onSnapshot(q, (snapshot) => {
-      const reviewData = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      })) as ReviewType[];
-      setReviews(reviewData);
-    });
+  //   const unsubscribe = onSnapshot(q, (snapshot) => {
+  //     const reviewData = snapshot.docs.map((doc) => ({
+  //       id: doc.id,
+  //       ...doc.data(),
+  //     })) as ReviewType[];
+  //     setReviews(reviewData);
+  //   });
 
-    return () => unsubscribe();
-  }, []);
+  //   return () => unsubscribe();
+  // }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -78,16 +70,16 @@ function ReviewForm({ username }: ReviewProps) {
     }
   };
 
-  const handleShuffle = () => {
-    const shuffleRandomReviews = reviews
-      .sort(() => Math.random() - 0.5)
-      .slice(0, 3);
-    setReviews(shuffleRandomReviews);
-  };
+  // const handleShuffle = () => {
+  //   const shuffleRandomReviews = reviews
+  //     .sort(() => Math.random() - 0.5)
+  //     .slice(0, 3);
+  //   setReviews(shuffleRandomReviews);
+  // };
 
   return (
-    <div className="text-lightWhite text-lg grid lg:grid-cols-3 items-center font-bold font-inria gap-5 ">
-      <div className="bg-aboutDark p-5 bg-opacity-50 rounded-xl flex-row mx-auto">
+    <div className="text-lightWhite text-lg grid items-center font-bold font-inria gap-5 ">
+      {/* <div className="bg-aboutDark p-5 bg-opacity-50 rounded-xl flex-row mx-auto">
         <RefreshCwIcon
           onClick={handleShuffle}
           className="float-right cursor-pointer"
@@ -107,7 +99,7 @@ function ReviewForm({ username }: ReviewProps) {
           <Link href={"/reviews"}>{t("more reviews")}</Link>
           <hr className="float-right w-3/4" />
         </div>
-      </div>
+      </div> */}
       <div className="lg:col-span-2 mx-auto">
         <h1 className="text-xl pb-5">
           {t("hello")}{" "}

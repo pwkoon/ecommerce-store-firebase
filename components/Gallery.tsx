@@ -34,7 +34,7 @@ const Gallery: React.FC = () => {
 
   useEffect(() => {
     const detectScreenSize = () => {
-      setIsLaptop(window.innerWidth >= 1440 && window.innerWidth < 2650);
+      setIsLaptop(window.innerWidth >= 1024 && window.innerWidth < 2650);
     };
     detectScreenSize();
     window.addEventListener("resize", detectScreenSize);
@@ -66,7 +66,19 @@ const Gallery: React.FC = () => {
   return (
     <>
       <div className="bg-lightWhite p-5 text-aboutDark font-bold text-4xl md:text-7xl text-center">
-        <Link href={"/"}>Guava Farm&apos;s {t("title")}</Link>
+        <Link
+          href="/"
+          className="text-2xl w-fit flex mx-auto md:block border border-4 p-2 font-bold"
+        >
+          <h1>GUAVA</h1>
+          <h1>FARM.</h1>
+        </Link>
+        <div className="grid grid-cols-4 font-inria gap-5 text-sm sm:text-xl md:text-2xl py-8">
+          <div className="underline underline-offset-4">Fruits</div>
+          <div>On the table</div>
+          <div>Farmer</div>
+          <div>Visitors</div>
+        </div>
       </div>
       <div className="h-auto 2xl:h-screen bg-lightWhite p-5 flex justify-center">
         {isLaptop ? (

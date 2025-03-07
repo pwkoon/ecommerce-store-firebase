@@ -5,6 +5,7 @@ import { Menu, X } from "lucide-react"; // Import icons from lucide-react
 import LogoutButton from "./LogoutButton";
 import { useUser } from "@/lib/useUser";
 import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/routing";
 
 interface NavbarProps {
   activeSection: string;
@@ -87,7 +88,12 @@ export default function Navbar({ activeSection, showNavbar }: NavbarProps) {
 
       {/* Mobile Navbar */}
       <div className="md:hidden fixed top-0 left-0 w-full bg-green-800 p-4 flex justify-between items-center z-50">
-        <span className="text-white font-bold text-lg">Guava Farm</span>
+        <div className="text-white border border-2 p-2 font-bold text-xs text-center">
+          <Link href={"/"}>
+            <h1>GUAVA</h1>
+            <h1>FARM.</h1>
+          </Link>
+        </div>
         <button onClick={() => setIsOpen(!isOpen)} className="text-white">
           {isOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
@@ -95,7 +101,7 @@ export default function Navbar({ activeSection, showNavbar }: NavbarProps) {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="z-50 fixed top-14 left-0 w-full bg-aboutDark bg-opacity-75 text-white flex flex-col gap-4 p-6 shadow-lg md:hidden">
+        <div className="z-50 fixed top-20 left-0 w-full bg-aboutDark bg-opacity-75 text-white flex flex-col gap-4 p-6 shadow-lg md:hidden">
           <a
             href="#about"
             className="hover:text-yellow-400"

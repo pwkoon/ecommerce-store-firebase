@@ -50,5 +50,60 @@
       "title": "guava farming",
       "description": "Close-up of a cultivated field with young plants sprouting from freshly plowed soil, bathed in warm golden sunlight"
     }
+  ],
+  "process": [
+    {
+      "title": "Month 1/2",
+      "subtitle": "Pruning & Preparation",
+      "description": [
+        "After the last harvest, trees are pruned to remove old branches and encourage new growth.",
+        "The soil is enriched with organic compost and fertilizers.",
+        "Pest and disease control measures are applied before the growing season begins."
+      ]
+    },
+    {
+      "title": "Month 3/4",
+      "subtitle": "Flowering Stage",
+      "description": [
+        "Guava trees start blooming, producing small white flowers.",
+        "Natural pollinators (bees, butterflies) help with pollination.",
+        "Some farmers practice hand-pollination to improve fruit set."
+      ]
+    },
+    {
+      "title": "Month 5/6",
+      "subtitle": "Fruit Development Begins",
+      "description": [
+        "Small guava fruits start forming after successful pollination.",
+        "Thinning is done to ensure the best fruits receive adequate nutrients.",
+        "Protective fruit bagging is applied to prevent insect damage."
+      ]
+    },
+    {
+      "title": "Month 7/8",
+      "subtitle": "Fruit Growth & Maturation Begins",
+      "description": [
+        "Guavas continue to grow and mature, changing color depending on the variety.",
+        "Trees require consistent watering, especially in dry climates.",
+        "Nutrient application and pest control measures are continued."
+      ]
+    },
+    {
+      "title": "Month 9/11",
+      "subtitle": "Harvest Season Begins",
+      "description": [
+        "Guavas are manually harvested when they reach the right ripeness, typically when they emit a sweet aroma and slightly soften.",
+        "Harvesting occurs in multiple rounds as not all guavas ripen at the same time.",
+        "Fruits are sorted, graded, and packed for sale or processing."
+      ]
+    },
+    {
+      "title": "Month 12",
+      "subtitle": "Post-Harvest Processing & Tree Resting Phase",
+      "description": [
+        "Leftover fruits are used for making jams, juices, or dried products.",
+        "The trees enter a dormant or low-activity phase before the next cycle begins."
+      ]
+    }
   ]
 }

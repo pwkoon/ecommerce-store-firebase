@@ -10,7 +10,7 @@
     "locale": "{locale, select, zh_CN {中文 (Simplified)} en {🇺🇸 English}  other {Unknown}}"
   },
   "Review": {
-    "title": "评论"
+    "average rating": "平均评分"
   },
   "Gallery": {
     "title": "收集册"
