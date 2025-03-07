@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
-import { useTranslations } from "next-intl";
+// import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
 import { useEffect, useState } from "react";
 import mockdata from "../data.json";
@@ -30,7 +30,7 @@ const Gallery: React.FC = () => {
   const [primaryProduct, setPrimaryProduct] = useState<number>(4);
   const [isLaptop, setIsLaptop] = useState<boolean | null>(null);
 
-  const t = useTranslations("Gallery");
+  // const t = useTranslations("Gallery");
 
   useEffect(() => {
     const detectScreenSize = () => {
